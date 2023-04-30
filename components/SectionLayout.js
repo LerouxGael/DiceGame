@@ -6,15 +6,32 @@ const playerTwo = 'Player 2';
 
 function SectionLayout(props){
     return(
-        <section class="grid grid-cols-12 h-full">
-            <div class="col-start-2 col-end-5">
-            <PlayerSection playerNumber={playerOne} ></PlayerSection>
+        <section className="grid grid-cols-12 h-full">
+            <div className="col-start-2 col-end-5">
+            <PlayerSection 
+            playerGlobal={props.playerOneGlobal} 
+            playerCurrent={props.playerOneCurrent}
+            isPlayerOneActive={props.isPlayerOneActive} 
+            playerNumber={playerOne} 
+            ></PlayerSection>
             </div>
-            <DiceSection diceValue={props.diceValue} changeDiceValue={props.changeDiceValue}></DiceSection>
-            <div class="col-start-9 col-end-11"> 
-            <PlayerSection playerNumber={playerTwo} ></PlayerSection>
+            <DiceSection 
+            clearCurrent = {props.clearCurrent} 
+            changeGlobal={props.changeGlobal} 
+            changeCurrent={props.changeCurrent} 
+            diceValue={props.diceValue} 
+            changeDiceValue={props.changeDiceValue}
+            isPlayerOneActive={props.isPlayerOneActive}
+            togglePlayer={props.togglePlayer}
+            ></DiceSection>
+            <div className="col-start-9 col-end-11"> 
+            <PlayerSection 
+            playerGlobal={props.playerTwoGlobal} 
+            playerCurrent={props.playerTwoCurrent}
+            isPlayerOneActive={props.isPlayerOneActive} 
+            playerNumber={playerTwo} 
+            ></PlayerSection>
             </div>
-            
         </section>
     );
 }
