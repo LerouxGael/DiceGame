@@ -117,6 +117,8 @@ table {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		width: 104px;  
+    height: 104px; 
 }
 
 .second-face{
@@ -131,6 +133,8 @@ table {
   .third-face {
 	display: flex;
 	justify-content: space-between;
+	width: 104px;  
+    height: 104px; 
   }
   
   .third-face .dot:nth-of-type(1) {
@@ -155,4 +159,14 @@ table {
   
   .fifth-face .column:nth-of-type(2) {
 	justify-content: center;
+  }
+
+  .shake {
+	animation: shake 0.5s ease-in-out;
+  }
+  
+  @keyframes shake {
+	0% { transform: translate(0, 0); }
+	10%, 30%, 50%, 70%, 90% { transform: translate(-2px, 0); }
+	20%, 40%, 60%, 80%, 100% { transform: translate(2px, 0); }
   }

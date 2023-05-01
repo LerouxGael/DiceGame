@@ -1,39 +1,41 @@
+import Image from "next/image";
+
 function DiceFace(props){
 
     switch (props.diceValue){
         case 1 :
     return (
         <div className="dice first-face ">
-                        {/* <span className="dot"> </span> */}
-                        <img src='/skull.svg' alt='skull'></img>
+                        
+                        <Image src='/skull.svg' alt='skull' width={104} height={104}/>
         </div>
     );
     case 2:
         return (
             <div className="dice second-face ">
-                <span className="dot"> </span>
-                <span className="dot"> </span>
+                <div className="dot"> </div>
+                <div className="dot"> </div>
             </div>
         );
 
     case 3:
         return(
                 <div className="dice third-face ">
-                    <span className="dot"></span>
-                    <span className="dot"></span>
-                    <span className="dot"></span>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
                 </div>
             );
     case 4:
             return(
                 <div className="fourth-face dice ">
                     <div className="column">
-                        <span className="dot"></span>
-                        <span className="dot"></span>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
                     </div>
                     <div className="column">
-                        <span className="dot"></span>
-                        <span className="dot"></span>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
                     </div>
                 </div>
             );
@@ -42,17 +44,17 @@ function DiceFace(props){
             <div className="fifth-face dice ">
   
                 <div className="column">
-                    <span className="dot"></span>
-                    <span className="dot"></span>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
                 </div>
                 
                 <div className="column">
-                    <span className="dot"></span>
+                    <div className="dot"></div>
                 </div>
                 
                 <div className="column">
-                    <span className="dot"></span>
-                    <span className="dot"></span>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
                 </div>
 
             </div>
@@ -61,14 +63,14 @@ function DiceFace(props){
         return(
             <div className="sixth-face dice ">
                 <div className="column">
-                    <span className="dot"></span>
-                    <span className="dot"></span>
-                    <span className="dot"></span>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
                 </div>
                 <div className="column">
-                    <span className="dot"></span>
-                    <span className="dot"></span>
-                        <span className="dot"></span>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
+                        <div className="dot"></div>
                 </div>
 
             </div>
