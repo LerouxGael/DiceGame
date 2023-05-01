@@ -45,6 +45,10 @@ function HomePage() {
     const changePlayerTwoGlobal = (scoreUpdate) => {
         setPlayerTwoGlobal(playerTwoGlobal+scoreUpdate);
     };
+    const clearGlobals = ()=> {
+        setPlayerOneGlobal(0);
+        setPlayerTwoGlobal(0);
+    }
 
     /* Functions to change players current scores from children*/
     const changePlayerOneCurrent = (scoreUpdate) => {
@@ -60,17 +64,23 @@ function HomePage() {
         setPlayerTwoCurrent(playerTwoCurrent+scoreUpdate);
     };
     
+    const reset =() => {
+        clearPlayerOneCurrent();
+        clearPlayerTwoCurrent();
+        clearGlobals();
+        setIsPlayerOneActive(true);
+    };
 
     return (
         <>
-         <MyHead>
+         <MyHead >
                     /* Todo : add icon */
         </MyHead> 
         <div className="p-4 radial-bg min-h-screen">
             
             <div className={myClass}>
                 
-                <Header />
+                <Header reset={reset}/>
                 <SectionLayout 
                 isPlayerOneActive={isPlayerOneActive} 
                 togglePlayer={togglePlayer} 
@@ -82,7 +92,7 @@ function HomePage() {
                 playerTwoCurrent={playerTwoCurrent}
                 changeGlobal={isPlayerOneActive ? changePlayerOneGlobal : changePlayerTwoGlobal}
                 changeCurrent={isPlayerOneActive ? changePlayerOneCurrent : changePlayerTwoCurrent}
-                
+                reset={reset}
                 
                 clearCurrent={isPlayerOneActive ? clearPlayerOneCurrent : clearPlayerTwoCurrent}
                 />

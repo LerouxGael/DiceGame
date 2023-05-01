@@ -16,6 +16,9 @@ function SectionLayout(props){
             ></PlayerSection>
             </div>
             <DiceSection 
+            gameOver={props.gameOver}
+            changeGameOver={props.changeGameOver}
+            reset={props.reset}
             clearCurrent = {props.clearCurrent} 
             changeGlobal={props.changeGlobal} 
             changeCurrent={props.changeCurrent} 
@@ -23,6 +26,8 @@ function SectionLayout(props){
             changeDiceValue={props.changeDiceValue}
             isPlayerOneActive={props.isPlayerOneActive}
             togglePlayer={props.togglePlayer}
+            playerGlobalValue={props.isPlayerOneActive ? props.playerOneGlobal : props.playerTwoGlobal}
+            playerCurrentValue = {props.isPlayerOneActive ? props.playerOneCurrent : props.playerTwoCurrent}
             ></DiceSection>
             <div className="col-start-9 col-end-11"> 
             <PlayerSection 
