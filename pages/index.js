@@ -27,7 +27,7 @@ function HomePage() {
     };
 
     /* Toggle bg on active player */ 
-    const myClass= clsx('text-lg bg-white font-Lato min-h-[calc(100vh-28px)]',  {
+    const myClass= clsx('text-lg bg-white font-Lato min-h-[calc(100vh-28px)] align-middle',  {
         'bg-active-player-1': isPlayerOneActive, 'bg-active-player-2' : !isPlayerOneActive } 
     );
 
@@ -82,6 +82,7 @@ function HomePage() {
                 
                 <Header reset={reset}/>
                 <SectionLayout 
+                
                 isPlayerOneActive={isPlayerOneActive} 
                 togglePlayer={togglePlayer} 
                 changeDiceValue={changeDiceValue} 

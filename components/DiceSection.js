@@ -1,21 +1,19 @@
 import DiceFace from "./DiceFace";
 import clsx from "clsx";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 function DiceSection(props){
     const [isShaking, setIsShaking] = useState(false);
 
-    const diceClass = clsx('m-auto row-start-2 md:row-start-1 h-[110px]', {'shake' : isShaking});
+    const diceClass = clsx('m-auto row-start-2 md:row-start-1 h-[110px]');
 
     const rollDice = () =>{ 
         
         const newDiceValue =Math.floor(Math.random()*6)+1;
 
-        setIsShaking(true);
+        setIsShaking(!isShaking);
         
-        setTimeout(() => {
-            setIsShaking(false);
-        }, 250);
 
         props.changeDiceValue(newDiceValue);
 
@@ -32,6 +30,8 @@ function DiceSection(props){
 const hold = () => {
     const value = props.playerCurrentValue;
     const global=props.playerGlobalValue + value;
+    console.log('hold function triggered')
+   
 
     /* CHECK FOR WINNER*/
     if(global >= 100){
@@ -49,7 +49,10 @@ const hold = () => {
         <div className="text-center col-start-5 col-end-9 md:col-start-6 md:col-end-8">
                 <div className="grid grid-rows-4 relative">
                     <div className={diceClass}>
-                        <button onClick={rollDice} className=''/* 'm-auto row-start-2 md:row-start-1' */><DiceFace diceValue={props.diceValue}/></button>
+                        <motion.button 
+                        animate={{rotate: isShaking ? 0 : 360 }} 
+                        transition={{type : "spring", duration : 0.3}}
+                        onClick={rollDice} className=''/* 'm-auto row-start-2 md:row-start-1' */><DiceFace diceValue={props.diceValue}/></motion.button>
                     </div>
                     <div className="row-start-4">
                         <button onClick={rollDice} className="flex items-center m-auto p-3">
