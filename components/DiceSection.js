@@ -9,7 +9,7 @@ function DiceSection(props){
     const diceClass = clsx('m-auto row-start-2 md:row-start-1 h-[110px]');
 
     const rollDice = () =>{ 
-        
+        if (!props.gameOver){
         const newDiceValue =Math.floor(Math.random()*6)+1;
 
         setIsShaking(!isShaking);
@@ -26,23 +26,29 @@ function DiceSection(props){
         else{  
             props.changeCurrent(newDiceValue);     
         }
+    }
 }
 const hold = () => {
+
+
+    if (!props.gameOver){
     const value = props.playerCurrentValue;
     const global=props.playerGlobalValue + value;
-    console.log('hold function triggered')
+
    
 
     /* CHECK FOR WINNER*/
     if(global >= 100){
         props.changeGlobal(value);
         props.clearCurrent();
+        props.changeGameOver(true);
     }
     else{
         props.changeGlobal(value);
         props.clearCurrent();
         props.togglePlayer();
     };
+}
     
 };
     return(

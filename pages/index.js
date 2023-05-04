@@ -7,8 +7,11 @@ import clsx from "clsx"
 
 
 function HomePage() {
-
-    
+    const [gameOver, setGameOver]
+     = useState(false);
+     const changeGameOver =(bool) => {
+        setGameOver(bool);
+     }
     /* dice value is set as state and prop drilled to components */
     const [diceValue, setDiceValue]= useState();
     const changeDiceValue = (result) => {
@@ -69,12 +72,13 @@ function HomePage() {
         clearPlayerTwoCurrent();
         clearGlobals();
         setIsPlayerOneActive(true);
+        setGameOver(false);
     };
 
     return (
         <>
          <MyHead >
-                    /* Todo : add icon */
+
         </MyHead> 
         <div className="p-4 radial-bg min-h-screen">
             
@@ -82,7 +86,8 @@ function HomePage() {
                 
                 <Header reset={reset}/>
                 <SectionLayout 
-                
+                gameOver={gameOver}
+                changeGameOver={changeGameOver}
                 isPlayerOneActive={isPlayerOneActive} 
                 togglePlayer={togglePlayer} 
                 changeDiceValue={changeDiceValue} 
