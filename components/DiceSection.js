@@ -1,10 +1,12 @@
 import DiceFace from "./DiceFace";
 import clsx from "clsx";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 function DiceSection(props){
     const [isShaking, setIsShaking] = useState(false);
+
+    const animateDice = useAnimation();
 
     const diceClass = clsx('m-auto row-start-2 md:row-start-1 h-[110px]');
 
@@ -13,7 +15,14 @@ function DiceSection(props){
         const newDiceValue =Math.floor(Math.random()*6)+1;
 
         setIsShaking(!isShaking);
-        
+        animateDice.start(
+            {
+                rotate: [0, 360],
+                y : [-5, 5, -1, 1- 0],
+                x : [4, -4, 2, -2, 0],
+                transition : {duration : 0.2, ease : "easeOut"}
+            }
+        );
 
         props.changeDiceValue(newDiceValue);
 
@@ -44,9 +53,14 @@ const hold = () => {
         props.changeGameOver(true);
     }
     else{
+        console.log('animate is set to')
         props.changeGlobal(value);
         props.clearCurrent();
-        props.togglePlayer();
+        //switching toggle to the useEffect in Sectionlayout
+        /* props.togglePlayer(); */
+
+        //setting animate to true to trigger animation in PlayerSection
+        props.changeAnimate(true);
     };
 }
     
@@ -56,8 +70,8 @@ const hold = () => {
                 <div className="grid grid-rows-4 relative">
                     <div className={diceClass}>
                         <motion.button 
-                        animate={{rotate: isShaking ? 0 : 360 }} 
-                        transition={{type : "spring", duration : 0.3}}
+                        animate={animateDice}/* {{rotate: isShaking ? 0 : 360 , x : [2,-2,2,-2,0]}} */ 
+                        /* transition={{type : "spring", duration : 0.3}} */
                         onClick={rollDice} className=''/* 'm-auto row-start-2 md:row-start-1' */><DiceFace diceValue={props.diceValue}/></motion.button>
                     </div>
                     <div className="row-start-4">

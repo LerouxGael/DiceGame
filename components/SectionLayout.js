@@ -1,6 +1,7 @@
 import PlayerSection from "./PlayerSection";
 import DiceSection from "./DiceSection";
 import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 
 const playerOne = 'Player 1';
@@ -11,17 +12,20 @@ const playerTwo = 'Player 2';
 function SectionLayout(props){
 
     /* State used to fire animation in PlayerSection if set to true in DiceSection*/
-    const [animate, setAnimate]= useState(false);
-    const changeAnimate = () => {
-        setAnimate(!animate);
+    const [animateCurrent, setAnimateCurrent]= useState(false);
+    const changeAnimate = (bool) => {
+        setAnimateCurrent(bool);
     }
+
+
 
     return(
         <section className="grid grid-cols-12 h-full">
             <div className="col-start-2 col-end-5">
             <PlayerSection 
+            togglePlayer={props.togglePlayer}
             changeAnimate={changeAnimate}
-            animate={animate}
+            animateCurrent={animateCurrent}
             playerGlobal={props.playerOneGlobal} 
             playerCurrent={props.playerOneCurrent}
             isPlayerOneActive={props.isPlayerOneActive} 
@@ -29,7 +33,7 @@ function SectionLayout(props){
             ></PlayerSection>
             </div>
             <DiceSection 
-            animate={animate}
+            animateCurrent={animateCurrent}
             changeAnimate = {changeAnimate}
             gameOver={props.gameOver}
             changeGameOver={props.changeGameOver}
@@ -46,8 +50,9 @@ function SectionLayout(props){
             ></DiceSection>
             <div className="col-start-9 col-end-11"> 
             <PlayerSection
+            togglePlayer={props.togglePlayer}
             changeAnimate={changeAnimate}
-            animate={animate}
+            animateCurrent={animateCurrent}
             playerGlobal={props.playerTwoGlobal} 
             playerCurrent={props.playerTwoCurrent}
             isPlayerOneActive={props.isPlayerOneActive} 

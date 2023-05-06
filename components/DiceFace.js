@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 function DiceFace(props){
 
@@ -6,8 +7,9 @@ function DiceFace(props){
         case 1 :
     return (
         <div className="dice first-face ">
-                        
-                        <Image src='/skull.svg' alt='skull' width={104} height={104}/>
+                        <motion.div animate={{scale : [1.3, 1.5, 0.8, 1], transition:{duration : 0.3, ease : "easeOut"}, rotate : [ -50, 10, 0] }}>
+                            <Image src='/skull.svg' alt='skull' width={104} height={104}/>
+                        </motion.div>
         </div>
     );
     case 2:
